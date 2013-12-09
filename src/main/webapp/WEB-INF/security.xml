@@ -25,10 +25,21 @@
     </authentication-manager>
 
     
-    <http auto-config='true'>
-        <intercept-url   pattern="/**"   access="ROLE_USER" />
+        <http auto-config='true'>
+            <intercept-url   pattern="/**"   access="ROLE_USER" />
+        </http>
+    
+    <!--
+    <http use-expressions="true"> 
+        <intercept-url pattern="/login.jsp"  access="permitAll" />
+        <intercept-url pattern="/**"   access="hasRole('ROLE_USER')" />
+        <form-login login-page="/login.jsp?not_auth=1"
+                    default-target-url="/login.jsp"
+                    authentication-failure-url="/login.jsp?login_error=1"/>
+        
+        <logout logout-success-url="/login.jsp?logout=1"/>
     </http>
-
+-->
     
     
 </beans:beans>
