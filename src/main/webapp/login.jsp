@@ -31,7 +31,6 @@
                         <td><input name="reset" type="reset" /></td>
                     </tr>
                 </table>
-
             </form>
         </sec:authorize>
         <c:if test="${not empty param.login_error}">
