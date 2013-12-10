@@ -24,22 +24,27 @@
         </authentication-provider>
     </authentication-manager>
 
-    
+    <!--
         <http auto-config='true'>
             <intercept-url   pattern="/**"   access="ROLE_USER" />
         </http>
+    -->
     
-    <!--
-    <http use-expressions="true"> 
-        <intercept-url pattern="/login.jsp"  access="permitAll" />
-        <intercept-url pattern="/**"   access="hasRole('ROLE_USER')" />
-        <form-login login-page="/login.jsp?not_auth=1"
+    <http pattern="/css/**"  security="none"/>
+    <http use-expressions="true">
+        <intercept-url pattern="/login.jsp" access="permitAll"/>
+        <intercept-url pattern="/admin.jsp" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        <form-login login-page="/login.jsp"
                     default-target-url="/login.jsp"
                     authentication-failure-url="/login.jsp?login_error=1"/>
-        
         <logout logout-success-url="/login.jsp?logout=1"/>
+        <session-management>
+            <concurrency-control max-sessions="1"  error-if-maximum-exceeded="true" />
+        </session-management>
+        <access-denied-handler error-page="/accessdenied.jsp"/>
     </http>
--->
+    
     
     
 </beans:beans>
