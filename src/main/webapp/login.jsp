@@ -7,13 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+
+<t:wrapper>
         <h1>Login</h1>
         <sec:authorize access="!isAuthenticated()">
             <form name="f" action="<c:url value='/j_spring_security_check'/>" method="POST">
@@ -61,5 +58,4 @@
         <sec:authorize access="hasRole('ROLE_ADMIN')"> 
             <a href="<c:url value='/admin.jsp'/>">admin page</a>
         </sec:authorize>
-    </body>
-</html>
+</t:wrapper>

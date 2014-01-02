@@ -33,7 +33,7 @@
     <http pattern="/css/**"  security="none"/>
     <http use-expressions="true">
         <intercept-url pattern="/login.jsp" access="permitAll"/>
-        <intercept-url pattern="/admin.jsp" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin.jsp" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
         <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
         <form-login login-page="/login.jsp"
                     default-target-url="/login.jsp"
